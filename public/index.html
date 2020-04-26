@@ -5,45 +5,88 @@
   <meta charset="utf8">
   <title>this vs. fetch</title>
   <!-- <script src="./example-fetches.js"></script> -->
+  <style>
+    .an-app {
+      margin: 2%;
+    }
+  </style>
 </head>
 
-<body style="display:flex; flex-direction: row; justify-content: space-around;">
+<body>
 
-  <section id='this'>
-    <h2>app: this</h2>
-    <form>
-      todo text: <input name="todoText" type="text" /> <br>
-      completed: <input name="completed" type="checkbox" /> <br>
-      id: <input name="id" type="number" value="1" /> <br>
-      <input onclick="appThis.handleGetAll('this-todos')" type="button" value="get all todos" /> <br>
-      <input onclick="appThis.handlePostTodo(this, 'this-todos')" type="button" value="post todo" /> <br>
-      <input onclick="appThis.handleGetOne(this, 'this-todos')" type="button" value="get one todo" /> <br>
-      <input onclick="appThis.handlePutTodo(this, 'this-todos')" type="button" value="put todo" /> <br>
-      <input onclick="appThis.handlePatchTodo(this, 'this-todos')" type="button" value="patch todo" /> <br>
-      <input onclick="appThis.handleDeleteTodo(this, 'this-todos')" type="button" value="delete todo" /> <br>
-    </form>
-    <div id="this-todos"></div>
+  <section id='apps' style="display:flex; flex-direction: row; justify-content: space-around;">
+    <section id='this' class='an-app'>
+      <h2>app: this</h2>
+      <p>Reads and writes synchronously from a property in the app. Data is stored locally in the browser. </p>
+      <hr>
+      <form>
+        todo text: <input name="todoText" type="text" /> <br>
+        completed: <input name="completed" type="checkbox" /> <br>
+        id: <input name="id" type="number" value="1" /> <br>
+        <input onclick="appThis.handleGetAll('this-todos')" type="button" value="get all todos" /> <br>
+        <input onclick="appThis.handlePostTodo(this, 'this-todos')" type="button" value="post todo" /> <br>
+        <input onclick="appThis.handleGetOne(this, 'this-todos')" type="button" value="get one todo" /> <br>
+        <input onclick="appThis.handlePutTodo(this, 'this-todos')" type="button" value="put todo" /> <br>
+        <input onclick="appThis.handlePatchTodo(this, 'this-todos')" type="button" value="patch todo" /> <br>
+        <input onclick="appThis.handleDeleteTodo(this, 'this-todos')" type="button" value="delete todo" /> <br>
+      </form>
+    </section>
+
+    <section id='fetch' class='an-app'>
+      <h2>app: fetch (promises)</h2>
+      <p>Reads and writes asynchronously from the RESTful API. Data is stored remotely in a .json file. </p>
+      <p>fetches will not wait for each other to finish before moving on</p>
+      <hr>
+      <form>
+        todo text: <input name="todoText" type="text" /> <br>
+        completed: <input name="completed" type="checkbox" /> <br>
+        id: <input name="id" type="number" value="1" /> <br>
+        <input onclick="appFetchPromises.handlePostTodo(this, 'api-todos')" type="button" value="post todo" /><br>
+        <input onclick="appFetchPromises.handleGetAll('api-todos')" type="button" value="get all todos" />
+        <br>
+        <input onclick="appFetchPromises.handleGetOne(this, 'api-todos')" type="button" value="get one todo" /><br>
+        <input onclick="appFetchPromises.handlePutTodo(this, 'api-todos')" type="button" value="put todo" /><br>
+        <input onclick="appFetchPromises.handlePatchTodo(this, 'api-todos')" type="button" value="patch todo" /><br>
+        <input onclick="appFetchPromises.handleDeleteTodo(this, 'api-todos')" type="button" value="delete todo" /><br>
+      </form>
+    </section>
+
+    <section id='fetch' class='an-app'>
+      <h2>app: fetch (async/await)</h2>
+      <p>Reads and writes asynchronously from the RESTful API. Data is stored remotely in a .json file. </p>
+      <p>fetches will wait for each other to finish before moving on</p>
+      <hr>
+      <form>
+        todo text: <input name="todoText" type="text" /> <br>
+        completed: <input name="completed" type="checkbox" /> <br>
+        id: <input name="id" type="number" value="1" /> <br>
+        <input onclick="appFetchAsyncAwait.handlePostTodo(this, 'api-todos')" type="button" value="post todo" /><br>
+        <input onclick="appFetchAsyncAwait.handleGetAll('api-todos')" type="button" value="get all todos" /> <br>
+        <input onclick="appFetchAsyncAwait.handleGetOne(this, 'api-todos')" type="button" value="get one todo" /><br>
+        <input onclick="appFetchAsyncAwait.handlePutTodo(this, 'api-todos')" type="button" value="put todo" /><br>
+        <input onclick="appFetchAsyncAwait.handlePatchTodo(this, 'api-todos')" type="button" value="patch todo" /><br>
+        <input onclick="appFetchAsyncAwait.handleDeleteTodo(this, 'api-todos')" type="button" value="delete todo" /><br>
+      </form>
+    </section>
+
   </section>
 
-  <section id='fetch'>
-    <h2>app: fetch</h2>
-    <form>
-      todo text: <input name="todoText" type="text" /> <br>
-      completed: <input name="completed" type="checkbox" /> <br>
-      id: <input name="id" type="number" value="1" /> <br>
-      <input onclick="appFetch.handleGetAll('fetch-todos')" type="button" value="get all todos" /> <br>
-      <input onclick="appFetch.handlePostTodo(this, 'fetch-todos')" type="button" value="post todo" /> <br>
-      <input onclick="appFetch.handleGetOne(this, 'fetch-todos')" type="button" value="get one todo" /> <br>
-      <input onclick="appFetch.handlePutTodo(this, 'fetch-todos')" type="button" value="put todo" /> <br>
-      <input onclick="appFetch.handlePatchTodo(this, 'fetch-todos')" type="button" value="patch todo" /> <br>
-      <input onclick="appFetch.handleDeleteTodo(this, 'fetch-todos')" type="button" value="delete todo" /> <br>
-    </form>
-    <div id="fetch-todos"></div>
-  </section>
+  <hr>
 
+  <section id='todos' style="display:flex; flex-direction: row; justify-content: space-around;">
+    <div>
+      <p>this todos</p>
+      <div id='this-todos'></div>
+    </div>
+    <div>
+      <p>API todos</p>
+      <div id='api-todos'></div>
+    </div>
+  </section>
 
   <script src="app-this.js"></script>
-  <script src="app-fetch.js"></script>
+  <script src="app-fetch-promises.js"></script>
+  <script src="app-fetch-async-await.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-const appFetch = {
+const appFetchPromises = {
   // data access methods
   getAll: function () {
     return fetch('/todos')
@@ -64,12 +64,14 @@ const appFetch = {
 
   // handler methods
   handleGetAll: function (outputId) {
+    // debugger;
     this.getAll()
       .then(todos => document.getElementById(outputId)
         .innerHTML = this.renderTodos(todos))
       .catch(err => console.log(err));
   },
   handlePostTodo: function (target, outputId) {
+    // debugger;
     const newTodo = {
       todoText: target.form.todoText.value,
       completed: target.form.completed.checked,
@@ -80,6 +82,7 @@ const appFetch = {
       .catch(err => console.log(err));
   },
   handleGetOne: function (target, outputId) {
+    // debugger;
     const id = Number(target.form.id.value);
     this.getOne(id)
       .then(todo => document.getElementById(outputId)
@@ -87,6 +90,7 @@ const appFetch = {
       .catch(err => console.log(err));
   },
   handlePutTodo: function (target, outputId) {
+    // debugger;
     const id = Number(target.form.id.value);
     const todoToPut = {
       todoText: target.form.todoText.value,
@@ -99,6 +103,7 @@ const appFetch = {
       .catch(err => console.log(err));
   },
   handlePatchTodo: function (target, outputId) {
+    // debugger;
     const id = Number(target.form.id.value);
     const todoToPatch = {
       id,
@@ -113,6 +118,7 @@ const appFetch = {
       .catch(err => console.log(err));
   },
   handleDeleteTodo: function (target, outputId) {
+    // debugger;
     const id = Number(target.form.id.value);
     this.deleteTodo(id)
       .then(todo => document.getElementById(outputId)
