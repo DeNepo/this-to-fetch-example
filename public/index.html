@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf8">
+  <title>this vs. fetch</title>
+  <!-- <script src="./example-fetches.js"></script> -->
+</head>
+
+<body style="display:flex; flex-direction: row; justify-content: space-around;">
+
+  <section id='this'>
+    <h2>app: this</h2>
+    <form>
+      todo text: <input name="todoText" type="text" /> <br>
+      completed: <input name="completed" type="checkbox" /> <br>
+      id: <input name="id" type="number" value="1" /> <br>
+      <input onclick="appThis.handleGetAll('this-todos')" type="button" value="get all todos" /> <br>
+      <input onclick="appThis.handlePostTodo(this, 'this-todos')" type="button" value="post todo" /> <br>
+      <input onclick="appThis.handleGetOne(this, 'this-todos')" type="button" value="get one todo" /> <br>
+      <input onclick="appThis.handlePutTodo(this, 'this-todos')" type="button" value="put todo" /> <br>
+      <input onclick="appThis.handlePatchTodo(this, 'this-todos')" type="button" value="patch todo" /> <br>
+      <input onclick="appThis.handleDeleteTodo(this, 'this-todos')" type="button" value="delete todo" /> <br>
+    </form>
+    <div id="this-todos"></div>
+  </section>
+
+  <section id='fetch'>
+    <h2>app: fetch</h2>
+    <form>
+      todo text: <input name="todoText" type="text" /> <br>
+      completed: <input name="completed" type="checkbox" /> <br>
+      id: <input name="id" type="number" value="1" /> <br>
+      <input onclick="appFetch.handleGetAll('fetch-todos')" type="button" value="get all todos" /> <br>
+      <input onclick="appFetch.handlePostTodo(this, 'fetch-todos')" type="button" value="post todo" /> <br>
+      <input onclick="appFetch.handleGetOne(this, 'fetch-todos')" type="button" value="get one todo" /> <br>
+      <input onclick="appFetch.handlePutTodo(this, 'fetch-todos')" type="button" value="put todo" /> <br>
+      <input onclick="appFetch.handlePatchTodo(this, 'fetch-todos')" type="button" value="patch todo" /> <br>
+      <input onclick="appFetch.handleDeleteTodo(this, 'fetch-todos')" type="button" value="delete todo" /> <br>
+    </form>
+    <div id="fetch-todos"></div>
+  </section>
+
+
+  <script src="app-this.js"></script>
+  <script src="app-fetch.js"></script>
+</body>
+
+</html>
